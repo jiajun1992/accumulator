@@ -1,6 +1,7 @@
 use accumulator::group::Rsa2048;
 use accumulator::hash;
 use accumulator::Accumulator;
+use ark_poly::polynomial;
 use ark_poly::univariate;
 use rug::Integer;
 
@@ -31,6 +32,7 @@ fn main() {
     poly2.push(cat1_hash);
     poly2.push(dog1_hash);
     dbg!(&poly1);
+    let f_p1 = polynomial::UVPolynomial::from_coefficients_vec(poly1);
     let poly3 = poly1 * poly2;
     dbg!(&poly3);
     // not implemented FFT field!
